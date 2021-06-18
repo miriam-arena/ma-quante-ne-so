@@ -3,16 +3,24 @@
     border-width: 2px;
     box-shadow: 0 0.6em 2em rgba(8, 8, 8, 0.2);
 }
-/* body{
-    background-image:url('../img/bg.png');
-    background-repeat: repeat;
-    background-size: cover;
-} */
+#fireworks{
+    margin:0;
+    position:absolute;
+    z-index: 100;
+    overflow: hidden;
+    height:100vh;
+    max-width:100vw;
+}
+#canvas{
+    overflow:hidden;
+    margin: 0;
+    background-color: transparent;
+}
 #bg{
     position:absolute;
     z-index: -100;
     overflow: hidden;
-    height:100vh;
+    max-height:100vh;
     max-width:100vw;
 }
 #bg img{
@@ -20,3 +28,26 @@
     opacity: 10%;
     height:130vh;
 }
+#options_button{
+    border-radius: 60px;
+    height:200px;
+    width:200px;
+}
+@media screen and (min-width:768px) 
+{
+    h1{
+        font-size: 3rem;
+    }
+    #sections-titles{
+        font-size: 6rem;   
+    }
+}
+canvas {
+	display: block;
+    position:absolute;
+    z-index: 100;
+    overflow: hidden;
+    height:100vh;
+    max-width:100vw;
+}
+
