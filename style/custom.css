@@ -54,7 +54,12 @@ canvas {
 .btn-success {
     color: #FEF9EF !important;
 }
-input[type=checkbox] {
+
+ /* Liquid Radio Button for questions.html 
+ Adapted from HTML5 canvas and css radio button tutorial by CodePen Tamino Martinius
+ https://codepen.io/Zaku/pen/xrKMgb?editors=1010 */
+
+ input[type=radio] {
     display: none;
   }
   
@@ -181,4 +186,101 @@ input[type=checkbox] {
   .circle--inner__4 { transform-origin: 112% 90%; }
   .circle--inner__5 { transform-origin: 75% -30%; }
   
+/* <--------> */
+
+  #pointer ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+  }
+  #pointer li{
+    float: left;
+    width: 25%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  #pointer ul > li:before {
+    content: "|";
+    font-size: 25px;
+    line-height: 1px;
+    display: block;
+    color: #FE6D73;
+    border-top: 1px solid #ededed;
+    margin: 0 0 15px 0;
+  }
   
+/* TIMELINE */
+
+#timeline{
+  height:4px;
+  width: 100%;
+  background-color:#FFCB77;
+}
+#progressTimeline{
+  height:4px;
+  background-color:#FE6D73;
+  width:0%;
+  z-index: 100;
+}
+.puntatore{
+  z-index:1000;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  margin-left: -25px;
+  border-radius: 50%;
+}
+.puntatore:hover{
+  transform: scale(1.2);
+  transition: all 300ms ease;
+}
+.timeline-icon.one {
+  background-color: #FE6D73 !important;
+  z-index: 100000;
+}
+.timeline-icon.two {
+  background-color: #FFCB77 !important;
+}
+.timeline-icon.three{
+  background-color: #FFCB77!important;
+}
+.timeline-icon.four {
+  background-color: #FFCB77 !important;
+}
+.mfirst{
+  top:-25px;
+}
+.m2{
+  top:-25px;
+  left:32.5%
+}
+.m3{
+  top:-25px;
+  left:66%
+}
+.mlast{
+  top:-25px;
+  left:100%
+}
+#container-timeline{
+  margin-bottom: 5rem;
+}
+.image{
+  opacity:0.75;
+}
+.image:hover{
+  opacity:1;
+}
+.radio-img > input { 
+  display:none;
+}
+.radio-img > .image{
+  cursor:pointer;
+}
+.radio-img > input:checked + .image{ 
+  border:4px solid #17C3B2;
+}
