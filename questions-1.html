@@ -11,26 +11,53 @@
 <body class="h-auto">
   <div id="container-timeline" class="container justify-content-between align-items-center text-center mt-5">
     <div class="row">
-      <div class="col-2"></div>
-      <div class="col-8">
+      <div class="col-1 col-lg-2"></div>
+      <div class="col-10 col-lg-8">
         <div id="timeline-wrap">
           <div id="timeline"></div>
           <div id="progressTimeline"></div>
-          <div id="avatar" class="puntatore mfirst timeline-icon one" data-toggle="tooltip" data-placement="bottom" title="Avatar">
-            <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
+          <div class="tooltip-click">
+            <a href="#">
+              <div id="avatar" class="puntatore mfirst timeline-icon one">
+                <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
+              </div>
+            </a>
+            <strong id="tooltip-pointer-avatar" class="tooltip-pointer">
+              <p> Avatar</p>
+            </strong>
           </div>
-          <div class="puntatore m2 timeline-icon two" data-toggle="tooltip" data-placement="bottom" title="Fine - La lingua Italiana">
-              <img height="35" src="img/bandiera-negativo2.png" alt="icona-bandiera">
+          <div class="tooltip-click">
+            <a href="#">
+              <div class="puntatore m2 timeline-icon two">
+                <img height="35" src="img/bandiera-negativo.png" alt="icona-bandiera">
+              </div>
+            </a>
+            <strong id="tooltip-pointer-language" class="tooltip-pointer">
+              <p> Fine <br> La lingua italiana</p>
+            </strong>
           </div>
-          <div class="puntatore m3 timeline-icon three" data-toggle="tooltip" data-placement="bottom" title="Fine - Il museo Brozzi">
-            <img height="35" src="img/profilo-negativo2.png" alt="icona-profilo-brozzi">
+          <div class="tooltip-click">
+            <a href="#">
+              <div class="puntatore m3 timeline-icon three" data-toggle="tooltip" data-placement="bottom" title="Fine - Il museo Brozzi">
+                <img height="35" src="img/profilo-negativo2.png" alt="icona-profilo-brozzi">
+              </div>
+            </a>
+            <strong id="tooltip-pointer-museum" class="tooltip-pointer">
+              <p> Fine <br> Il Museo Brozzi</p>
+            </strong>
           </div>
-          <div class="puntatore mlast timeline-icon four" data-toggle="tooltip" data-placement="bottom" title="Fine - Il territorio">
-            <img height="35" src="img/scudo-negativo2.png" alt="icona-scudo-traversetolo">
+          <div class="tooltip-click">
+            <a href="#">
+              <div class="puntatore mlast timeline-icon four" data-toggle="tooltip" data-placement="bottom" title="Fine - Il territorio">
+                <img height="35" src="img/scudo-negativo2.png" alt="icona-scudo-traversetolo">
+              </div>
+            </a>
+            <strong id="tooltip-pointer-territory" class="tooltip-pointer">
+              <p> Fine <br>Il territorio</p>
+            </strong>
           </div>
         </div>
-      </div>
-      <div class="col-2"></div>
+      <div class="col-1 col-lg-2"></div>
     </div>
   </div>
   <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
@@ -42,19 +69,19 @@
     <div class="row mt-1 mt-md-5">
       <div class="col-12 col-lg-4 text-center">
         <label class="radio-img">
-          <input type="radio" name="layout"/>
+          <input type="radio" name="answer" value="1"/>
           <img class="image" src="img/vittoria-1.png"></img>
         </label>
       </div>
       <div class="col-12 col-lg-4 text-center">
         <label class="radio-img">
-          <input type="radio" name="layout"/>
+          <input type="radio" name="answer" value="2"/>
           <img class="image" src="img/vittoria-2.png"></img>
         </label>
       </div>
       <div class="col-12 col-lg-4 text-center">
         <label class="radio-img">
-          <input type="radio" name="layout"/>
+          <input type="radio" name="answer" value="3"/>
           <img class="image" src="img/vittoria-3.png"></img>
         </label>
       </div>
@@ -82,11 +109,13 @@
     // Timeline
     const avatar = document.querySelector('#avatar');
     const progressTimeline = document.querySelector('#progressTimeline');
+    const tooltip = document.querySelector('#tooltip-pointer-avatar');
     let questionNumber = 3
     let totalQuestions = 10
     let progressPercent = (questionNumber / totalQuestions) * 100;
 
     avatar.style.setProperty('left', progressPercent + '%');
+    tooltip.style.setProperty('left', progressPercent + '%');
     progressTimeline.setAttribute('style','width: ' + progressPercent + '%');
   </script>
 </body>
