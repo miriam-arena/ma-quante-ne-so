@@ -197,6 +197,16 @@ canvas {
   #question{
     margin-bottom: 1rem;;
   }
+  .h3-video{
+    margin-left: 0.5rem !important;
+  }
+  #third-answer{
+    margin-top: -3rem;
+    margin-left: 2.5rem
+  }
+  #video .circle{
+    margin-top:0.5rem;
+  }
 }
   
 /* <--------> */
@@ -282,12 +292,12 @@ canvas {
 #container-timeline{
   margin-bottom: 5rem;
 }
-
 /* multiple choice - images */
 
 .image{
   opacity:0.75;
   border:6px solid transparent;
+  border-radius: 20px;
 }
 /* .image:hover{
   opacity:1;
@@ -298,13 +308,13 @@ canvas {
 .radio-img > .image{
   cursor:pointer;
 }
-.radio-img > input:checked + .image{ 
+/* .radio-img > input:checked + .image{ 
   border:6px solid #17C3B2;
   opacity: 1;
 }
 .radio-img > input:not(:checked) + .image{
-  filter: grayscale(100%)
-}
+  filter: grayscale(100%);
+} */
 /* <---> */
 
 /* TOOLTIP on progress bar */
@@ -335,5 +345,19 @@ canvas {
 }
 #tooltip-pointer-territory{
   left:100%;
+}
+.tooltip-pointer span{
+  position: absolute;
+  top:1px;
+  right: 1px;
+  font-size: 25px;
+  line-height: 1;
+}
+.tooltip-pointer span a{
+  text-decoration: none;
+  color: #00529B;
+}
+.tooltip-pointer span:focus .tooltip-pointer{
+  display: none;/*CLOSE TOOLTIP ON CLICK*/
 }
 /* <--> */

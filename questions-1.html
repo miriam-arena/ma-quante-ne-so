@@ -18,42 +18,67 @@
           <div id="progressTimeline"></div>
           <div class="tooltip-click">
             <a href="#">
+              <div id="start" class="puntatore mfirst timeline-icon one">
+                <img width="40" src="img/start.png" alt="icona-start">
+              </div>
+            </a>
+            <strong id="tooltip-pointer-start" class="tooltip-pointer">
+              <p> Start</p>
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg></span>
+            </strong>
+          </div>
+          <div class="tooltip-click">
+            <a href="#">
               <div id="avatar" class="puntatore mfirst timeline-icon one">
                 <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
               </div>
             </a>
             <strong id="tooltip-pointer-avatar" class="tooltip-pointer">
               <p> Avatar</p>
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg></span>
             </strong>
           </div>
           <div class="tooltip-click">
             <a href="#">
-              <div class="puntatore m2 timeline-icon two">
-                <img height="35" src="img/bandiera-negativo.png" alt="icona-bandiera">
+              <div id="pointer1" class="puntatore m2 timeline-icon two">
+                <img height="35" src="img/bandiera-negativo2.png" alt="icona-bandiera">
               </div>
             </a>
             <strong id="tooltip-pointer-language" class="tooltip-pointer">
               <p> Fine <br> La lingua italiana</p>
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg></span>
             </strong>
           </div>
           <div class="tooltip-click">
             <a href="#">
-              <div class="puntatore m3 timeline-icon three" data-toggle="tooltip" data-placement="bottom" title="Fine - Il museo Brozzi">
+              <div id="pointer2" class="puntatore m3 timeline-icon three" data-toggle="tooltip" data-placement="bottom" title="Fine - Il museo Brozzi">
                 <img height="35" src="img/profilo-negativo2.png" alt="icona-profilo-brozzi">
               </div>
             </a>
             <strong id="tooltip-pointer-museum" class="tooltip-pointer">
               <p> Fine <br> Il Museo Brozzi</p>
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg></span>
             </strong>
           </div>
           <div class="tooltip-click">
             <a href="#">
-              <div class="puntatore mlast timeline-icon four" data-toggle="tooltip" data-placement="bottom" title="Fine - Il territorio">
+              <div id="pointer3" class="puntatore mlast timeline-icon four" data-toggle="tooltip" data-placement="bottom" title="Fine - Il territorio">
                 <img height="35" src="img/scudo-negativo2.png" alt="icona-scudo-traversetolo">
               </div>
             </a>
             <strong id="tooltip-pointer-territory" class="tooltip-pointer">
               <p> Fine <br>Il territorio</p>
+              <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg></span>
             </strong>
           </div>
         </div>
@@ -68,20 +93,20 @@
     </div>
     <div class="row mt-1 mt-md-5">
       <div class="col-12 col-lg-4 text-center">
-        <label class="radio-img">
-          <input type="radio" name="answer" value="1"/>
+        <label class="radio-img" id="image1">
+          <input type="radio" onclick="getRadioId()" name="answer" value="1"/>
           <img class="image" src="img/vittoria-1.png"></img>
         </label>
       </div>
       <div class="col-12 col-lg-4 text-center">
-        <label class="radio-img">
-          <input type="radio" name="answer" value="2"/>
-          <img class="image" src="img/vittoria-2.png"></img>
+        <label class="radio-img" id="image2">
+          <input type="radio" onclick="getRadioId()" name="answer" value="2"/>
+          <img id="image2" id="ahi" class="image" src="img/vittoria-2.png"></img>
         </label>
       </div>
       <div class="col-12 col-lg-4 text-center">
-        <label class="radio-img">
-          <input type="radio" name="answer" value="3"/>
+        <label class="radio-img" id="image3">
+          <input type="radio" onclick="getRadioId()" name="answer" value="3"/>
           <img class="image" src="img/vittoria-3.png"></img>
         </label>
       </div>
@@ -103,13 +128,14 @@
         </div>
     </div>
   </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
   <script>
     // Timeline
     const avatar = document.querySelector('#avatar');
     const progressTimeline = document.querySelector('#progressTimeline');
     const tooltip = document.querySelector('#tooltip-pointer-avatar');
+    const start = document.querySelector('#start');
     let questionNumber = 3
     let totalQuestions = 10
     let progressPercent = (questionNumber / totalQuestions) * 100;
@@ -117,6 +143,68 @@
     avatar.style.setProperty('left', progressPercent + '%');
     tooltip.style.setProperty('left', progressPercent + '%');
     progressTimeline.setAttribute('style','width: ' + progressPercent + '%');
+
+    var section = 1;
+    const mq = window.matchMedia( "(max-width: 600px)" );
+    const pointer1 = document.querySelector('#pointer1');
+    const pointer2 = document.querySelector('#pointer2');
+    const pointer3 = document.querySelector('#pointer3');
+    
+    if(mq.matches){
+      
+      if(section==1){
+        // avatar.style.setProperty('left','0%');
+        start.style.setProperty('left','0%');
+        pointer1.style.setProperty('left','100%');
+        pointer2.setAttribute('style','display:none');
+        pointer3.setAttribute('style','display:none');
+      }
+    if(section==2){
+        // avatar.style.setProperty('left','0%');
+        start.setAttribute('style','display:none');
+        pointer1.style.setProperty('left','0%');
+        pointer2.style.setProperty('left','100%');
+        pointer3.setAttribute('style','display:none');
+      }
+    if(section==3){
+        // avatar.style.setProperty('left','0%');
+        start.setAttribute('style','display:none');
+        pointer1.setAttribute('style','display:none');
+        pointer2.style.setProperty('left','0%');
+        pointer3.style.setProperty('left','100%');
+      }
+    }
+
+   
+    const image1 = document.getElementById('image1');
+    const image2 = document.getElementById('image2');
+    const image3 = document.getElementById('image3');
+    function getRadioId(){
+      var selectedValue = document.querySelector('input:checked');
+      // console.log(selectedValue);
+      console.log();
+      array = [image1, image2, image3];
+      for(i=0;i<array.length;i++)
+      {
+        var value = array[i].getElementsByTagName('input')[0];
+        // console.log(value)
+        if(value==selectedValue){
+          array[i].getElementsByTagName('img')[0].style.setProperty('border', '6px solid #17c3b2');
+          array[i].getElementsByTagName('img')[0].style.setProperty('opacity', '1');
+          array[i].getElementsByTagName('img')[0].style.setProperty('filter', 'grayscale(0%)');
+        }
+        else{
+          array[i].getElementsByTagName('img')[0].style.setProperty('filter', 'grayscale(100%)');
+          array[i].getElementsByTagName('img')[0].style.setProperty('border', '6px solid transparent');
+          array[i].getElementsByTagName('img')[0].style.setProperty('opacity', '0.75');
+          
+        }
+      }
+    }
+    
+   
+    
+    
   </script>
 </body>
 </html>
