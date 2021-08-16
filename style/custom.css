@@ -7,7 +7,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size:contain;
-    
+
 }
 .btn{
     border-width: 2px;
@@ -42,27 +42,27 @@ canvas {
     height:200px;
     width:200px;
 }
-@media screen and (min-width:768px) 
+@media screen and (min-width:768px)
 {
     h1{
         font-size: 3rem;
     }
     #sections-titles{
-        font-size: 6rem;   
+        font-size: 6rem;
     }
 }
 .btn-success {
     color: #FEF9EF !important;
 }
 
- /* Liquid Radio Button for questions.html 
+ /* Liquid Radio Button for questions.html
  Adapted from HTML5 canvas and css radio button tutorial by CodePen Tamino Martinius
  https://codepen.io/Zaku/pen/xrKMgb?editors=1010 */
 
  input[type=radio] {
     display: none;
   }
-  
+
   .circle {
     position: absolute;
     margin-top: 9px;
@@ -71,59 +71,59 @@ canvas {
     transform: translate(-50%, -50%);
     filter: url('#gooey');
   }
-  
+
   @keyframes circle__in {
     0% {
       transform: translate(-50%, -50%) scale(1);
     }
-  
+
     16% {
       transform: translate(-50%, -50%) scale(0.95, 1.05);
     }
-  
+
     33% {
       transform: translate(-50%, -50%) scale(1);
     }
-  
+
     50% {
       transform: translate(-50%, -50%) scale(1.05, 0.95);
     }
-  
+
     66% {
       transform: translate(-50%, -50%) scale(1);
     }
-  
+
     83% {
       transform: translate(-50%, -50%) scale(0.98, 1.02);
     }
-  
+
     100% {
       transform: translate(-50%, -50%) scale(1);
     }
   }
-  
-  
+
+
   input:checked + .circle {
     transform-origin: 50% 50%;
     animation-name: circle__in;
     animation-duration: 750ms;
     animation-timing-function: linear;
   }
-  
+
   .circle {
     transform-origin: 50% 50%;
     animation-name: circle__out;
     animation-duration: 1000ms;
     animation-timing-function: ease;
   }
-  
+
   .circle--outer {
     width: 30px;
     height: 30px;
     border-radius: 100%;
     border: 2px solid #FE6D73;
   }
-  
+
   .circle--inner {
     top: 6px;
     left: 6px;
@@ -133,60 +133,60 @@ canvas {
     border-radius: 100%;
     background: #FE6D73;
   }
-  
+
   @keyframes circle--inner__in {
     0% {
       transform: scale(0.0);
     }
-  
+
     80% {
       transform: scale(1.02);
     }
-  
+
     100% {
       transform: scale(1);
     }
   }
-  
+
   input:checked + .circle .circle--inner {
     transform-origin: 50% -20%;
     animation-name: circle--inner__in;
     animation-duration: 500ms;
     animation-timing-function: cubic-bezier(0.85, 0, 0.2, 1);
   }
-  
+
   @keyframes circle--inner__out {
     0% {
       transform: scale(1);
     }
-  
+
     80% {
       transform: scale(0.19);
     }
-  
+
     99% {
       transform: scale(0.21);
     }
-  
+
     100% {
       transform: scale(0);
     }
   }
-  
+
   .circle--inner {
     animation-name: circle--inner__out;
     animation-duration: 500ms;
     animation-timing-function: cubic-bezier(0.85, 0, 0.2, 1);
     animation-fill-mode: forwards;
   }
-  
+
   .circle--inner__1 { transform-origin: -12% -8%; }
   .circle--inner__2 { transform-origin: -35% 50%; }
   .circle--inner__3 { transform-origin: 60% 130%; }
   .circle--inner__4 { transform-origin: 112% 90%; }
   .circle--inner__5 { transform-origin: 75% -30%; }
 
-  @media screen and (max-width:600px) 
+  @media screen and (max-width:600px)
 {
   .form-check-label h3{
     margin-left: 2rem;
@@ -208,7 +208,7 @@ canvas {
     margin-top:0.5rem;
   }
 }
-  
+
 /* <--------> */
 
   #pointer ul{
@@ -232,7 +232,7 @@ canvas {
     border-top: 1px solid #ededed;
     margin: 0 0 15px 0;
   }
-  
+
 /* TIMELINE */
 
 #timeline{
@@ -302,13 +302,13 @@ canvas {
 /* .image:hover{
   opacity:1;
 } */
-.radio-img > input { 
+.radio-img > input {
   display:none;
 }
 .radio-img > .image{
   cursor:pointer;
 }
-/* .radio-img > input:checked + .image{ 
+/* .radio-img > input:checked + .image{
   border:6px solid #17C3B2;
   opacity: 1;
 }
@@ -320,7 +320,7 @@ canvas {
 /* TOOLTIP on progress bar */
 
 .tooltip-click > a:focus + .tooltip-pointer{
-  display:block!important; 
+  display:block!important;
 }
 .tooltip-pointer{
   display:none;
@@ -361,3 +361,9 @@ canvas {
   display: none;/*CLOSE TOOLTIP ON CLICK*/
 }
 /* <--> */
+
+/* QUESTION PAGE */
+#long_text{text-align: justify; text-justify: inter-word; font-size: 25px;}
+
+.form-check{display:none;}
+.nextPrevBtn{display:none;}
