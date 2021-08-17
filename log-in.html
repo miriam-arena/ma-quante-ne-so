@@ -7,6 +7,7 @@
     <title>Ma quante ne so?</title>
     <link rel="stylesheet" href="style/bootstrap.css">
     <link rel="stylesheet" href="style/custom.css">
+    <script src="js/lib.js"></script>
 </head>
 <body>
     <div class="container d-flex flex-column text-center justify-content-center min-vh-100">
@@ -18,7 +19,7 @@
         <div class="row">
             <div class="col-1 col-md-4"></div>
             <div class="col-10 col-md-4">
-                <form>
+                <form id="regForm">
                     <div class="form-group dropdown">
                         <label for="exampleFormControlSelect1"></label>
                         <button id="options_button" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -32,34 +33,39 @@
                         </ul>
                     </div>
                     <div class="form-group">
-                    <label for="email-input">Email</label>
-                    <input type="email" class="form-control form-control-sm border-secondary" id="email-input" aria-describedby="emailHelp" name="email">
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                      <label for="email-input">Email</label>
+                      <input type="email" class="form-control form-control-sm border-secondary" id="email-input" aria-describedby="emailHelp" name="email">
+                      <small id="emailHelp" class="form-text text-muted">Non condivideremo mai la tua mail con nessun altro.</small>
                     </div>
                     <div class="form-group">
-                    <label for="password-input">Password</label>
-                    <input type="password" class="form-control form-control-sm border-secondary" id="password-input" name="password">
+                      <label for="password-input">Password</label>
+                      <input type="password" class="form-control form-control-sm border-secondary" id="password-input" name="password">
+                    </div>
+                    <div class="form-group">
+                      <label for="password-input2">Conferma Password</label>
+                      <input type="password" class="form-control form-control-sm border-secondary" id="password-input2" name="confirm_password">
                     </div>
                     <div class="form-group">
                         <label for="options-input">Associazione</label>
                         <select class="form-control form-control-sm border-secondary" id="options-input"  name="associations">
-                        <option id="option">Associazione 1</option>
-                        <option>Associazione 2</option>
-                        <option>Associazione 3</option>
-                        <option>Associazione 4</option>
-                        <option>Associazione 5</option>
+                        <option value="1" id="option">Associazione 1</option>
+                        <option value="2">Associazione 2</option>
+                        <option value="3">Associazione 3</option>
+                        <option value="4">Associazione 4</option>
+                        <option value="5">Associazione 5</option>
                         </select>
                     </div>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-secondary" id="registerUserBtn">
                         Invia
                     </button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="startQuizModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                                <p>Ricordati di scaricare l'app di Quick Museum prima di proseguire!</p>
+                                <h2>Registrazione effettuata</h2>
                             </div>
                             <div class="modal-body">
+                              <p>Ricordati di scaricare l'app di Quick Museum prima di proseguire!</p>
                                 <a href="https://www.quickmuseum.it/">
                                     <img class="d-flex m-auto" src="img/quick-museum-logo.png" alt="quickmuseum">
                                 </a>
@@ -82,12 +88,18 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function()
         {
+          // check logged in user
+          $.get( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged?c="+getCookie('loginToken'), function( data )
+          {
+            if (data == "ok")
+               window.location = "section.html?s=1";
+          });
+
             $('.dropdown-item').click(function()
             {
                 var img = $('<img />', {
@@ -97,9 +109,42 @@
                             });
                 $('#avatar-span').html(img);
             })
-            $('#myModal').on('shown.bs.modal', function ()
-            {$('#myInput').trigger('focus')
+
+            $('#startQuizModal').on('hidden.bs.modal', function ()
+            {
+               window.location = "section.html?s=1";
             })
+        });
+
+        $("#registerUserBtn").click(function()
+        {
+           $('.errors').remove();
+          // populate the title tag
+          $.post( "https://artathlon.arternative-lab.eu/api/registerQuizVisitor", $("#regForm").serialize(), function( data )
+          {
+             data = JSON.parse(data);
+             if (data.error_e)
+                $("input[name='email']").after("<p style='color:red' class='errors'>"+data.error_e+"</p>");
+             else if (data.error_e2)
+                $("input[name='email']").after("<p style='color:red' class='errors'>"+data.error_e2+"</p>");
+             if (data.error_p)
+               $("input[name='password']").after("<p style='color:red' class='errors'>"+data.error_p+"</p>");
+             else if (data.error_p2)
+                $("input[name='confirm_password']").after("<p style='color:red' class='errors'>"+data.error_p2+"</p>");
+             else if (data.error_p3)
+                $("input[name='confirm_password']").after("<p style='color:red' class='errors'>"+data.error_p3+"</p>");
+
+            if (data.code == 200) // can continue
+            {
+              // store login acces in cookie
+              let today = new Date();
+              var expire = new Date();
+              expire.setTime(today.getTime() + 3600000*24*35);
+              document.cookie = "loginToken="+data.token+"; SameSite=None; Secure; path=/" + "; expires="+expire.toUTCString();
+
+              $('#startQuizModal').modal('show');
+            }
+          });
         });
     </script>
 
