@@ -13,7 +13,35 @@
     <div class="container d-flex flex-column text-center justify-content-center min-vh-100">
         <div class="row">
             <div class="col-12">
-                <h2 class="text-primary">REGISTRATI PER INIZIARE!</h2>
+                <h2 class="text-primary">FAI IL LOGIN!</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 col-md-4"></div>
+            <div class="col-10 col-md-4">
+                <form id="loginForm">
+                  <div class="form-group">
+                    <label for="email-login">Email</label>
+                    <input type="email" class="form-control form-control-sm border-secondary" id="email-login" aria-describedby="emailHelp" name="email_login">
+                  </div>
+                  <div class="form-group">
+                    <label for="password-login">Password</label>
+                    <input type="password" class="form-control form-control-sm border-secondary" id="password-login" name="password_login">
+                  </div>
+                </form>
+            </div>
+            <div class="col-1 col-md-4"></div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-12">
+              <button type="button" class="btn btn-secondary" id="loginUserBtn">
+                  Invia
+              </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-primary">O REGISTRATI PER INIZIARE!</h2>
             </div>
         </div>
         <div class="row">
@@ -94,7 +122,7 @@
         $(document).ready(function()
         {
           // check logged in user
-          $.get( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged?c="+getCookie('loginToken'), function( data )
+          $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged", { c : getCookie('loginToken') }, function( data )
           {
             if (data == "ok")
                window.location = "section.html?s=1";
@@ -146,6 +174,36 @@
             }
           });
         });
+
+        $("#loginUserBtn").click(function()
+        {
+           $('.errors-l').remove();
+          // populate the title tag
+          $.post( "https://artathlon.arternative-lab.eu/api/loginQuizVisitor", $("#loginForm").serialize(), function( data )
+          {
+            data = JSON.parse(data);
+            if (data.error_el)
+               $("input[name='email_login']").after("<p style='color:red' class='errors-l'>"+data.error_el+"</p>");
+            if (data.error_pl)
+              $("input[name='password_login']").after("<p style='color:red' class='errors-l'>"+data.error_pl+"</p>");
+            if (data.error_l)
+              $("#loginUserBtn").after("<p style='color:red' class='errors-l'>"+data.error_l+"</p>");
+
+
+            if (data.code == 200) // can continue
+            {
+              // store login acces in cookie
+              let today = new Date();
+              var expire = new Date();
+              expire.setTime(today.getTime() + 3600000*24*35);
+              document.cookie = "loginToken="+data.token+"; SameSite=None; Secure; path=/" + "; expires="+expire.toUTCString();
+
+              $('#startQuizModal').modal('show');
+            }
+
+          });
+        });
+
     </script>
 
 </body>
