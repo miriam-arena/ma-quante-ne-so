@@ -123,14 +123,26 @@
 
     $(document).ready(function()
     {
+        // check logged in user
+        $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged",{c : getCookie('loginToken'), su : 2}, function( data )
+        {
+          const nextLocation = evaluateUser(data)
+          if (nextLocation.forward)
+             window.location = nextLocation.location;
+        });
+
+        // get the next section and question number from the url query string
         const allParams = new URLSearchParams(window.location.search);
         const s = allParams.get("s");
+        var q = allParams.get("q");
+        if (!q) // first section does not have a question number
+          q = 1;
 
-        // populate the title tag
+        // populate the title tag and assign a url to the "go on" button
         $.get( "https://artathlon.arternative-lab.eu/api/quizSections", function( data )
         {
             $("#sections-titles").html(data[s-1].name).show(1000);
-            $("#questionLink").attr("href", "question.html?s="+s+"&q=1")
+            $("#questionLink").attr("href", "question.html?s="+s+"&q="+q)
         });
     });
 

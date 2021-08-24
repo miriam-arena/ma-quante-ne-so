@@ -90,7 +90,7 @@
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                                <h2>Registrazione effettuata</h2>
+                                <h2 id="qModalTitle">Registrazione effettuata</h2>
                             </div>
                             <div class="modal-body">
                               <p>Ricordati di scaricare l'app di Quick Museum prima di proseguire!</p>
@@ -170,6 +170,7 @@
               expire.setTime(today.getTime() + 3600000*24*35);
               document.cookie = "loginToken="+data.token+"; SameSite=None; Secure; path=/" + "; expires="+expire.toUTCString();
 
+              $('#qModalTitle').html("Login corretto");
               $('#startQuizModal').modal('show');
             }
           });
