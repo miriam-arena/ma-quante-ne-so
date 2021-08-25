@@ -22,21 +22,20 @@ function getCookie(cname)
 /* user logged in or already started the quiz or unknown */
 function evaluateUser(data)
 {
-    data = JSON.parse(data);
+    var dataObj = JSON.parse(data);
 
-    if (data.unknown)
+    if (dataObj.unknown) // unknown user -> send back to login
     {
-      data.forward = true;
-      data.location = "log-in.html";
+      dataObj.location = "log-in.html";
     }
-    // TODO: finire implementazione per altri casi in cui devo mandare all'ultima risposta data o non devo rimandare da nessuna parte.
-    // TODO: e poi usare questo pattern in tutte le pagine per il controllo del login. [come usato in section.html]
-    /*
-    $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged",{c : getCookie('loginToken'), su : 2}, function( data )
+    else if (dataObj.forward && dataObj.hasOwnProperty("s") && dataObj.hasOwnProperty("q")) // known user that started the quiz -> send to latest question
     {
-      const nextLocation = evaluateUser(data)
-      if (nextLocation.forward)
-         window.location = nextLocation.location;
-    });
-    */
+      dataObj.location = "question.html?s="+dataObj.s+"&q="+dataObj.q;
+    }
+    else // known user but did not start the quiz -> send to first section
+    {
+      dataObj.location = "section.html?s=1";
+    }
+
+    return dataObj;
 }

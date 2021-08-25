@@ -363,16 +363,17 @@
 
       $(document).ready(function()
       {
-          // check logged in user
-          $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged?c="+getCookie('loginToken'), function( data )
-          {
-            if (data != "ok")
-               window.location = "log-in.html";
-          });
-
           const allParams = new URLSearchParams(window.location.search);
           const s = allParams.get("s");
           const q = allParams.get("q");
+
+          // check logged in user
+          $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged",{c : getCookie('loginToken'), su : 2, q: q}, function( data )
+          {
+            const nextLocation = evaluateUser(data)
+            if (nextLocation.forward)
+               window.location = nextLocation.location;
+          });
 
           // populate the question, long_text and replies tag
           $.get( "https://artathlon.arternative-lab.eu/api/quizQuestion/2/"+s+"/"+q, function( data )

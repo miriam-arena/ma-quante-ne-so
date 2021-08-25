@@ -105,7 +105,7 @@
                                 </a>
                             </div>
                             <div class="modal-footer justify-content-center">
-                              <a href="section.html?s=1"><button type="button" class="btn btn-secondary" >Prosegui se hai già provveduto :)</button></a>
+                              <a href="log-in.html"><button type="button" class="btn btn-secondary" >Prosegui se hai già provveduto :)</button></a>
                             </div>
                           </div>
                         </div>
@@ -122,10 +122,11 @@
         $(document).ready(function()
         {
           // check logged in user
-          $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged", { c : getCookie('loginToken') }, function( data )
+          $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged", { c : getCookie('loginToken'), su : 2}, function( data )
           {
-            if (data == "ok")
-               window.location = "section.html?s=1";
+            const nextLocation = evaluateUser(data)
+            if (nextLocation.forward && nextLocation.location != "log-in.html")
+               window.location = nextLocation.location;
           });
 
             $('.dropdown-item').click(function()
@@ -140,7 +141,7 @@
 
             $('#startQuizModal').on('hidden.bs.modal', function ()
             {
-               window.location = "section.html?s=1";
+               window.location = "log-in.html";
             })
         });
 
