@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,144 +10,183 @@
     <link rel="stylesheet" href="style/custom.css">
     <script src="js/lib.js"></script>
 </head>
+
 <body class="h-auto">
     <div id="container-timeline" class="container justify-content-between align-items-center text-center mt-5">
         <div class="row">
-          <div class="col-1 col-lg-2"></div>
-          <div class="col-10 col-lg-8">
-            <div id="timeline-wrap">
-              <div id="timeline"></div>
-              <div id="progressTimeline"></div>
-              <div class="tooltip-click">
-                <a href="#">
-                  <div id="avatar" class="puntatore mfirst timeline-icon one">
-                    <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
-                  </div>
-                </a>
-                <strong id="tooltip-pointer-avatar" class="tooltip-pointer">
-                  <p> Avatar</p>
-                </strong>
-              </div>
-              <div class="tooltip-click">
-                <a href="#">
-                  <div id="pointer1" class="puntatore m2 timeline-icon two">
-                    <img height="35" src="img/bandiera-negativo2.png" alt="icona-bandiera">
-                  </div>
-                </a>
-                <strong id="tooltip-pointer-language" class="tooltip-pointer">
-                  <p> Fine <br> La lingua italiana</p>
-                </strong>
-              </div>
-              <div class="tooltip-click">
-                <a href="#">
-                  <div id="pointer2" class="puntatore m3 timeline-icon three" data-toggle="tooltip" data-placement="bottom" title="Fine - Il museo Brozzi">
-                    <img height="35" src="img/profilo-negativo2.png" alt="icona-profilo-brozzi">
-                  </div>
-                </a>
-                <strong id="tooltip-pointer-museum" class="tooltip-pointer">
-                  <p> Fine <br> Il Museo Brozzi</p>
-                </strong>
-              </div>
-              <div class="tooltip-click">
-                <a href="#">
-                  <div id="pointer3" class="puntatore mlast timeline-icon four" data-toggle="tooltip" data-placement="bottom" title="Fine - Il territorio">
-                    <img height="35" src="img/scudo-negativo2.png" alt="icona-scudo-traversetolo">
-                  </div>
-                </a>
-                <strong id="tooltip-pointer-territory" class="tooltip-pointer">
-                  <p> Fine <br>Il territorio</p>
-                </strong>
-              </div>
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-6 col-md-8">
+                <div id="timeline-wrap">
+                    <div id="timeline"></div>
+                    <div id="progressTimeline"></div>
+                    <div class="tooltip-click">
+                        <a href="#">
+                            <div id="start" class="puntatore mfirst timeline-icon one">
+                                <img width="40" src="img/start.png" alt="icona-start">
+                            </div>
+                        </a>
+                        <strong id="tooltip-pointer-start" class="tooltip-pointer">
+            <p> Start</p>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg></span>
+          </strong>
+                    </div>
+                    <div class="tooltip-click">
+                        <a href="#">
+                            <div id="avatar" class="puntatore mfirst timeline-icon one">
+                                <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
+                            </div>
+                        </a>
+                        <strong id="tooltip-pointer-avatar" class="tooltip-pointer">
+            <p> Avatar</p>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg></span>
+          </strong>
+                    </div>
+                    <div class="tooltip-click">
+                        <a href="#">
+                            <div id="pointer1" class="puntatore m2 timeline-icon two">
+                                <img height="35" src="img/bandiera-negativo2.png" alt="icona-bandiera">
+                            </div>
+                        </a>
+                        <strong id="tooltip-pointer-language" class="tooltip-pointer">
+            <p> Fine <br> La lingua italiana</p>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg></span>
+          </strong>
+                    </div>
+                    <div class="tooltip-click">
+                        <a href="#">
+                            <div id="pointer2" class="puntatore m3 timeline-icon three" data-toggle="tooltip" data-placement="bottom" title="Fine - Il museo Brozzi">
+                                <img height="35" src="img/profilo-negativo2.png" alt="icona-profilo-brozzi">
+                            </div>
+                        </a>
+                        <strong id="tooltip-pointer-museum" class="tooltip-pointer">
+            <p> Fine <br> Il Museo Brozzi</p>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg></span>
+          </strong>
+                    </div>
+                    <div class="tooltip-click">
+                        <a href="#">
+                            <div id="pointer3" class="puntatore mlast timeline-icon four" data-toggle="tooltip" data-placement="bottom" title="Fine - Il territorio">
+                                <img height="35" src="img/scudo-negativo2.png" alt="icona-scudo-traversetolo">
+                            </div>
+                        </a>
+                        <strong id="tooltip-pointer-territory" class="tooltip-pointer">
+            <p> Fine <br>Il territorio</p>
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg></span>
+          </strong>
+                    </div>
+                </div>
             </div>
-          <div class="col-1 col-lg-2"></div>
-        </div>
-      </div>
-    <div class="container d-flex flex-column justify-content-center text-center h-100 mt-5">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-success mt-5">MA QUANTE NE SO?!</h2>
+            <div class="col-5 col-md-3 col-lg-2 text-right">
+                <button type="button" class="btn btn-primary text-light" href="#" id="logoutUserBtn">Log out</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h1 id="sections-titles" class="text-success" style="display:none"></h1>
+        <div class="container d-flex flex-column justify-content-center text-center h-100 mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-success mt-5">MA QUANTE NE SO?!</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1 id="sections-titles" class="text-success" style="display:none"></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <a href="#" id="questionLink"><button class="btn btn-secondary btn-lg">Avanti</button></a>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 mt-3">
-                <a href="#" id="questionLink"><button class="btn btn-secondary btn-lg">Avanti</button></a>
-            </div>
-        </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-    <script>
-        // Timeline
-    const avatar = document.querySelector('#avatar');
-    const progressTimeline = document.querySelector('#progressTimeline');
-    const tooltip = document.querySelector('#tooltip-pointer-avatar');
-    let questionNumber = 0
-    let totalQuestions = 10
-    let progressPercent = (questionNumber / totalQuestions) * 100;
+        <script>
+            // Timeline
+            const avatar = document.querySelector('#avatar');
+            const progressTimeline = document.querySelector('#progressTimeline');
+            const tooltip = document.querySelector('#tooltip-pointer-avatar');
+            let questionNumber = 0
+            let totalQuestions = 10
+            let progressPercent = (questionNumber / totalQuestions) * 100;
 
-    avatar.style.setProperty('left', progressPercent + '%');
-    tooltip.style.setProperty('left', progressPercent + '%');
-    progressTimeline.setAttribute('style','width: ' + progressPercent + '%');
+            avatar.style.setProperty('left', progressPercent + '%');
+            tooltip.style.setProperty('left', progressPercent + '%');
+            progressTimeline.setAttribute('style', 'width: ' + progressPercent + '%');
 
-    var section = 1;
-    const mq = window.matchMedia( "(max-width: 600px)" );
-    const pointer1 = document.querySelector('#pointer1');
-    const pointer2 = document.querySelector('#pointer2');
-    const pointer3 = document.querySelector('#pointer3');
+            var section = 1;
+            const mq = window.matchMedia("(max-width: 600px)");
+            const pointer1 = document.querySelector('#pointer1');
+            const pointer2 = document.querySelector('#pointer2');
+            const pointer3 = document.querySelector('#pointer3');
 
-    if(mq.matches){
+            if (mq.matches) {
 
-      if(section==1){
-        // avatar.style.setProperty('left','0%');
-        pointer1.style.setProperty('left','100%');
-        pointer2.setAttribute('style','display:none');
-        pointer3.setAttribute('style','display:none');
-      }
-    if(section==2){
-        // avatar.style.setProperty('left','0%');
-        pointer1.style.setProperty('left','0%');
-        pointer2.style.setProperty('left','100%');
-        pointer3.setAttribute('style','display:none');
-      }
-    if(section==3){
-        // avatar.style.setProperty('left','0%');
-        pointer1.setAttribute('style','display:none');
-        pointer2.style.setProperty('left','0%');
-        pointer3.style.setProperty('left','100%');
-      }
-    }
+                if (section == 1) {
+                    // avatar.style.setProperty('left','0%');
+                    pointer1.style.setProperty('left', '100%');
+                    pointer2.setAttribute('style', 'display:none');
+                    pointer3.setAttribute('style', 'display:none');
+                }
+                if (section == 2) {
+                    // avatar.style.setProperty('left','0%');
+                    pointer1.style.setProperty('left', '0%');
+                    pointer2.style.setProperty('left', '100%');
+                    pointer3.setAttribute('style', 'display:none');
+                }
+                if (section == 3) {
+                    // avatar.style.setProperty('left','0%');
+                    pointer1.setAttribute('style', 'display:none');
+                    pointer2.style.setProperty('left', '0%');
+                    pointer3.style.setProperty('left', '100%');
+                }
+            }
 
-    $(document).ready(function()
-    {
-      // get the next section and question number from the url query string
-      const allParams = new URLSearchParams(window.location.search);
-      const s = allParams.get("s");
-      var q = allParams.get("q");
-      if (!q) // first section does not have a question number
-        q = 1;
+            $(document).ready(function() {
+                // get the next section and question number from the url query string
+                const allParams = new URLSearchParams(window.location.search);
+                const s = allParams.get("s");
+                var q = allParams.get("q");
+                if (!q) // first section does not have a question number
+                    q = 1;
 
-        // check logged in user
-        $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged",{c : getCookie('loginToken'), su : 2, s: s}, function( data )
-        {
-          const nextLocation = evaluateUser(data)
-          if (nextLocation.forward)
-             window.location = nextLocation.location;
-        });
+                // check logged in user
+                $.post("https://artathlon.arternative-lab.eu/api/quizVisitorLogged", {
+                    c: getCookie('loginToken'),
+                    su: 2,
+                    s: s
+                }, function(data) {
+                    const nextLocation = evaluateUser(data)
+                    if (nextLocation.forward)
+                        window.location = nextLocation.location;
+                });
 
-        // populate the title tag and assign a url to the "go on" button
-        $.get( "https://artathlon.arternative-lab.eu/api/quizSections", function( data )
-        {
-            $("#sections-titles").html(data[s-1].name).show(1000);
-            $("#questionLink").attr("href", "question.html?s="+s+"&q="+q)
-        });
-    });
-
-    </script>
+                // populate the title tag and assign a url to the "go on" button
+                $.get("https://artathlon.arternative-lab.eu/api/quizSections", function(data) {
+                    $("#sections-titles").html(data[s - 1].name).show(1000);
+                    $("#questionLink").attr("href", "question.html?s=" + s + "&q=" + q)
+                });
+            });
+            $("#logoutUserBtn").click(function() {
+                // remove token from server
+                $.post("https://artathlon.arternative-lab.eu/api/logoutQuizVisitor", {
+                    c: getCookie('loginToken')
+                }, function() {
+                    // remove token from cookie
+                    document.cookie = "loginToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    window.location = "log-in.html";
+                });
+            });
+        </script>
 </body>
+
 </html>
