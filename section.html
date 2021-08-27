@@ -166,7 +166,7 @@
                     s: s
                 }, function(data) {
                     const nextLocation = evaluateUser(data)
-                    if (nextLocation.forward)
+                    if (nextLocation.forward && nextLocation.location != "section.html?s=1")
                         window.location = nextLocation.location;
                 });
 
