@@ -424,12 +424,14 @@
             else
               $("#followingLink").hide();
 
-            if (data.prev > 0 && data.prevSection == data.section) // there is a previous question, show the "previous question" link
+            if (data.prev > 0 /*&& data.prevSection == data.section*/) // there is a previous question, show the "previous question" link
               $("#previousLink").show().attr("href", "question.html?s="+data.prevSsection+"&q="+data.prev)
             else
               $("#previousLink").hide();
 
-            if (data.section != s) // need to change section
+            if (data.section == 0) // need to change section
+              $("#followingLink").show().attr("href", "finish-line.html")
+            else if (data.section != s) // need to change section
               $("#followingLink").show().attr("href", "section-end.html?s="+data.section+"&q="+data.next)
 
             // put here code to correct the position of the user in the top bar
