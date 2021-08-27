@@ -91,21 +91,22 @@
         <div class="container d-flex flex-column justify-content-center text-center h-100 mt-5">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-success mt-5">BRAVO! <br> HAI CONCLUSO LA PRIMA PARTE DEL QUESTIONARIO!</h1>
+                    <h1 class="text-success mt-5">BRAVO! <br> HAI CONCLUSO LA <span id="surveyPartTit"></span> PARTE DEL QUESTIONARIO!</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h3 class="text-success">PROSEGUI PER RAGGIUNGERE IL MUSEO </h3>
+                    <h3 class="text-success">PROSEGUI PER RAGGIUNGERE <span id="surveyPartSubTit"></span></h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 mt-3">
-                    <a href="#"><button class="btn btn-secondary btn-lg">Avanti</button></a>
+                    <a href="#" id="questionLink"><button class="btn btn-secondary btn-lg">Avanti</button></a>
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
         <script>
             // Timeline
@@ -160,6 +161,23 @@
               if (!q) // first section does not have a question number
                 q = 1;
 
+              // udate titles
+              switch (s)
+              {
+                case "2":
+                  $("#surveyPartTit").html("PRIMA");
+                  $("#surveyPartSubTit").html("IL MUSEO...");
+                  break;
+                case "3":
+                  $("#surveyPartTit").html("SECONDA");
+                  $("#surveyPartSubTit").html("TRAVERSETOLO...");
+                  break;
+                case "4":
+                  $("#surveyPartTit").html("TERZA");
+                  $("#surveyPartSubTit").html("LA SCHERMATA FINALE");
+                  break;
+                }
+
                 // check logged in user
                 $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged",{c : getCookie('loginToken'), su : 2, s: s}, function( data )
                 {
@@ -168,10 +186,9 @@
                      window.location = nextLocation.location;
                 });
 
-                // populate the title tag and assign a url to the "go on" button
+                // assign a url to the "go on" button
                 $.get( "https://artathlon.arternative-lab.eu/api/quizSections", function( data )
                 {
-                    $("#sections-titles").html(data[s-1].name).show(1000);
                     $("#questionLink").attr("href", "question.html?s="+s+"&q="+q)
                 });
             });
