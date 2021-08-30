@@ -78,7 +78,7 @@ input[type=radio] {
 
 .circle {
     position: absolute;
-    margin-top: 9px;
+    top: 20px;
     width: 30px;
     height: 30px;
     transform: translate(-50%, -50%);
@@ -205,9 +205,9 @@ input:checked+.circle .circle--inner {
     .form-check-label h3 {
         margin-left: 2rem;
     }
-    .circle {
+    /* .circle {
         margin-top: 4rem;
-    }
+    } */
     #question {
         margin-bottom: 1rem;
         ;
@@ -424,9 +424,10 @@ input:checked+.circle .circle--inner {
     font-size: 25px;
 }
 
-.form-check {
+
+/* .form-check {
     display: none;
-}
+} */
 
 .nextPrevBtn {
     display: none;

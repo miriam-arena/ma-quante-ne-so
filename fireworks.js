@@ -167,7 +167,6 @@ hue= random(0, 360 );
             if(timerTotal<=40){
                 timerTotal*=1.1;
             } 
-            console.log(timerTotal);
     } else {
         timerTick++;
     }

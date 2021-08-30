@@ -105,7 +105,7 @@
                                 </a>
                             </div>
                             <div class="modal-footer justify-content-center">
-                              <a href="log-in.html"><button type="button" class="btn btn-secondary" >Prosegui se hai già provveduto :)</button></a>
+                              <button type="button" class="btn btn-secondary" id="modalButton">Prosegui se hai già provveduto :)</button>
                             </div>
                           </div>
                         </div>
@@ -138,7 +138,10 @@
                             });
                 $('#avatar-span').html(img);
             })
-
+            $('#modalButton').click(function() 
+            {
+                $('#startQuizModal').modal('hide');
+            })
             $('#startQuizModal').on('hidden.bs.modal', function ()
             {
                window.location = "log-in.html";
