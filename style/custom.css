@@ -205,9 +205,9 @@ input:checked+.circle .circle--inner {
     .form-check-label h3 {
         margin-left: 2rem;
     }
-    /* .circle {
-        margin-top: 4rem;
-    } */
+    .circle {
+        margin-top: 30px;
+    }
     #question {
         margin-bottom: 1rem;
         ;
