@@ -425,9 +425,9 @@ input:checked+.circle .circle--inner {
 }
 
 
-/* .form-check {
+.form-check {
     display: none;
-} */
+}
 
 .nextPrevBtn {
     display: none;
