@@ -291,11 +291,11 @@
       </div>
       <div class="row mt-3 mt-md-5 mb-5 text-center">
           <div class="col-6">
-            <a href="#" id="previousLink" class="nextPrevBtn"><button class="btn btn-success btn-lg">
+            <!-- <a href="#" id="previousLink" class="nextPrevBtn"><button class="btn btn-success btn-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
                     <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
                 </svg>
-            </button></a>
+            </button></a> -->
           </div>
           <div class="col-6">
               <a href="#" id="followingLink" class="nextPrevBtn"><button class="btn btn-success btn-lg">
@@ -380,11 +380,6 @@
             else
               $("#followingLink").hide();
 
-            if (data.prev > 0 /*&& data.prevSection == data.section*/) // there is a previous question, show the "previous question" link
-              $("#previousLink").show().attr("href", "question.html?s="+data.prevSsection+"&q="+data.prev)
-            else
-              $("#previousLink").hide();
-
             if (data.section == 0) // need to change section
               $("#followingLink").show().attr("href", "finish-line.html")
             else if (data.section != s) // need to change section
@@ -401,12 +396,12 @@
             avatar.style.setProperty('left', progressPercent + '%');
             tooltip.style.setProperty('left', progressPercent + '%');
             progressTimeline.setAttribute('style','width: ' + progressPercent + '%');
-            
+
             // define the section number
-            if (cq>15){ // 15 is the number of the last question of the second section 
+            if (cq>15){ // 15 is the number of the last question of the second section
               section=3;
             }
-            else if(cq>10){ // 10 is the number of the last question of the first section 
+            else if(cq>10){ // 10 is the number of the last question of the first section
               section=2;
             }
             else{
@@ -416,7 +411,7 @@
               document.getElementById('pointer'+i+'_img').src = 'img/pointer'+i+'_negativo.png';
               document.getElementById('pointer'+i).setAttribute('style','background-color:#FE6D73 !important;');
             }
-            
+
             const mq = window.matchMedia( "(max-width: 600px)" );
             const start = document.querySelector('#start');
             const pointer1 = document.querySelector('#pointer1');
