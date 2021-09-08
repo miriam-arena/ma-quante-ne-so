@@ -31,7 +31,7 @@ canvas {
     z-index: 100;
     overflow: hidden;
     height: 100vh;
-    max-width: 100vw;
+    max-width: 95vw;
 }
 
 #canvas {
@@ -431,4 +431,23 @@ input:checked+.circle .circle--inner {
 
 .nextPrevBtn {
     display: none;
+}
+
+#question{
+    font-weight:1000; 
+    text-transform: uppercase;
+    border:3px solid  #FE6D73;
+    outline: 6px solid #FFCB77;
+    border-radius: 10px;
+    padding:0.5rem;
+    background-color: #FEf9ef;
+}
+
+.form-control-sm, #registerUserBtn, #loginUserBtn{
+    border-radius: 1.5rem;
+}
+
+form{
+    background-color: #ffffff;
+    padding:3rem;
 }
