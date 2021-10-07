@@ -106,6 +106,14 @@
       </div>
 
 
+      <!-- QUESTION IMAGE -->
+      <div class="row">
+          <div class="col-12 text-center">
+              <img id="questionImg" alt="" src="" style="max-width:800px; padding-top:20px">
+          </div>
+      </div>
+
+
       <!-- REPLIES -->
       <div class="row mt-1 mt-md-5">
         <div class="col-12 text-left">
@@ -306,14 +314,6 @@
           </div>
       </div>
 
-      <div class="row mt-3 mt-md-5 mb-5 text-center">
-          <div class="col-12">
-              <button type="button" class="btn btn-secondary" id="logoutUserBtn">
-                  Logout
-              </button>
-          </div>
-      </div>
-
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -336,8 +336,12 @@
           $.get( "https://artathlon.arternative-lab.eu/api/quizQuestion/2/"+s+"/"+q, function( data )
           {
             $("#question").html(data.question);
+
             if (data.long_text != "")
               $("#long_text").html(data.long_text);
+
+            if (data.image != "")
+              $("#questionImg").attr("src", "https://artathlon.arternative-lab.eu/storage/"+data.image).attr("alt", "descrizione immagine assente");
 
             // show response options
             if (data.reply_1)
@@ -401,12 +405,12 @@
             avatar.style.setProperty('left', progressPercent + '%');
             tooltip.style.setProperty('left', progressPercent + '%');
             progressTimeline.setAttribute('style','width: ' + progressPercent + '%');
-            
+
             // define the section number
-            if (cq>15){ // 15 is the number of the last question of the second section 
+            if (cq>15){ // 15 is the number of the last question of the second section
               section=3;
             }
-            else if(cq>10){ // 10 is the number of the last question of the first section 
+            else if(cq>10){ // 10 is the number of the last question of the first section
               section=2;
             }
             else{
@@ -416,7 +420,7 @@
               document.getElementById('pointer'+i+'_img').src = 'img/pointer'+i+'_negativo.png';
               document.getElementById('pointer'+i).setAttribute('style','background-color:#FE6D73 !important;');
             }
-            
+
             const mq = window.matchMedia( "(max-width: 600px)" );
             const start = document.querySelector('#start');
             const pointer1 = document.querySelector('#pointer1');
