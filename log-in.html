@@ -25,7 +25,7 @@
                 <small class="form-text text-muted"><a href="#" class="text-secondary" type="submit" data-toggle="modal" data-target="#recuperoPassword">Clicca qui se hai dimenticato la password.</a></small>
               </div>
               <button type="button" class="btn btn-secondary mb-5 col-12" id="loginUserBtn">
-                Invia
+                Via!
             </button>
             </form>
       </div>
@@ -50,7 +50,6 @@
               <form id="regForm" class="mb-5">
                 <h2 class="text-primary">O REGISTRATI PER INIZIARE!</h2>
                   <div class="form-group dropdown text-center">
-                      <label for="exampleFormControlSelect1"></label>
                       <button id="options_button" class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
                           <span id="avatar-span">Scegli l'avatar</span>
                           <span class="caret"></span>
@@ -63,32 +62,44 @@
                           <li class="text-secondary dropdown-item"><img src="img/utensili.png" width="50" alt="icona_utensili">  Utensili</li>
                           <li class="text-secondary dropdown-item"><img src="img/gatto.png" width="50" alt="icona_gatto">  Gatto</li>
                       </ul>
+                      <input type="hidden" name="avatar" value="img/parmigiano.png" id="avatar-input">
                   </div>
                   <div class="form-group">
-                    <label for="email-input">Email</label>
-                    <input type="email" class="form-control form-control-sm border-secondary" id="email-input" aria-describedby="emailHelp" name="email">
+                    <label for="nic-input">Nickname</label>
+                    <input type="text" class="form-control form-control-sm border-secondary" id="nic-input" name="nic" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email-input">Email*</label>
+                    <input type="email" class="form-control form-control-sm border-secondary" id="email-input" aria-describedby="emailHelp" name="email" required>
                     <small id="emailHelp" class="form-text text-muted">Non condivideremo mai la tua mail con nessun altro.</small>
                   </div>
                   <div class="form-group">
-                    <label for="password-input">Password</label>
-                    <input type="password" class="form-control form-control-sm border-secondary" id="password-input" name="password">
+                    <label for="password-input">Password*</label>
+                    <input type="password" class="form-control form-control-sm border-secondary" id="password-input" name="password" required>
                   </div>
                   <div class="form-group">
-                    <label for="password-input2">Conferma Password</label>
-                    <input type="password" class="form-control form-control-sm border-secondary" id="password-input2" name="confirm_password">
+                    <label for="password-input2">Conferma Password*</label>
+                    <input type="password" class="form-control form-control-sm border-secondary" id="password-input2" name="confirm_password" required>
                   </div>
                   <div class="form-group">
-                      <label for="options-input">Associazione</label>
-                      <select class="form-control form-control-sm border-secondary" id="options-input"  name="associations">
-                      <option value="1" id="option">Associazione 1</option>
-                      <option value="2">Associazione 2</option>
-                      <option value="3">Associazione 3</option>
-                      <option value="4">Associazione 4</option>
-                      <option value="5">Associazione 5</option>
+                    <label for="naz-input">Nazionalit&agrave;</label>
+                    <input type="text" class="form-control form-control-sm border-secondary" id="naz-input" name="nat" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="cit-input">Da che citt&agrave; giochi</label>
+                    <input type="text" class="form-control form-control-sm border-secondary" id="cit-input" name="cit" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="ass-select">Associazione o scuola</label>
+                      <select class="form-control form-control-sm border-secondary" id="ass-select"  name="associations" aria-describedby="assHelp">
+                        <option value="0"></option>
                       </select>
+                      <small id="assHelp" class="form-text text-muted">
+                        se non trovi la tua associazione di riferimenti è perché non si è iscritta al gioco.
+                      </small>
                   </div>
                   <button type="button" class="btn btn-secondary mb-5 col-12" id="registerUserBtn">
-                      Invia
+                      Registrati e comincia!
                   </button>
                   <div class="modal fade" id="startQuizModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -124,6 +135,15 @@
     <script>
         $(document).ready(function()
         {
+          // populate the options of the Associtions select
+          $.get("https://artathlon.arternative-lab.eu/api/getPartner", function(data)
+          {
+            for (var ass of data)
+            {
+                $("<option />",{'value': ass.id, 'html': ass.name}).appendTo("#ass-select");
+            }
+          });
+
           // check logged in user
           $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged", { c : getCookie('loginToken'), su : 2}, function( data )
           {
@@ -140,8 +160,9 @@
                                 alt: 'avatar'
                             });
                 $('#avatar-span').html(img);
+                $('#avatar-input').attr('value', $(this).find('img').attr('src'));
             })
-            $('#modalButton').click(function() 
+            $('#modalButton').click(function()
             {
                 $('#startQuizModal').modal('hide');
             })
