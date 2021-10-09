@@ -26,7 +26,7 @@
                             </div>
                         </a>
                         <strong id="tooltip-pointer-start" class="tooltip-pointer">
-              <p> Start</p>
+              <p> Via</p>
               <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
               <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
             </svg></span>
@@ -35,7 +35,7 @@
                     <div class="tooltip-click">
                         <a href="#">
                             <div id="avatar" class="puntatore mfirst timeline-icon one">
-                                <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
+                                <img height="35" src="" alt="">
                             </div>
                         </a>
                         <strong id="tooltip-pointer-avatar" class="tooltip-pointer">
@@ -91,10 +91,10 @@
           </div>
         </div>
     </div>
-        <div class="container d-flex flex-column justify-content-center text-center h-100 mt-5">
+        <div class="container d-flex flex-column justify-content-center text-center mt-5">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-success mt-5">BRAVO! <br> HAI CONCLUSO LA <span id="surveyPartTit"></span> PARTE DEL QUESTIONARIO!</h1>
+                    <h1 class="text-success mt-5">BRAV@! <br> HAI CONCLUSO LA <span id="surveyPartTit"></span> PARTE DEL QUESTIONARIO!</h1>
                 </div>
             </div>
             <div class="row">
@@ -117,8 +117,15 @@
             const progressTimeline = document.querySelector('#progressTimeline');
             const tooltip = document.querySelector('#tooltip-pointer-avatar');
             const start = document.querySelector('#start');
-            let questionNumber = 3.25
-            let totalQuestions = 10
+
+            // now let's draw the user's avatar in the right place (half hard-coded)
+            var urlParams = new URLSearchParams(window.location.search);
+            let questionNumber = 0;
+            if (urlParams.get('s') == '2') // point to the second stage
+              questionNumber = 23;
+            else if (urlParams.get('s') == '3')  // point to the third stage
+              questionNumber = 52;
+            let totalQuestions = 57;
             let progressPercent = (questionNumber / totalQuestions) * 100;
 
             avatar.style.setProperty('left', progressPercent + '%');
@@ -187,6 +194,12 @@
                   const nextLocation = evaluateUser(data)
                   if (nextLocation.forward)
                      window.location = nextLocation.location;
+
+                  data = JSON.parse(data);
+                  // build the name of the negative avatar img
+                  const arr = data.avatar.split(".");
+                  var avatarImg = arr[0]+"-negativo."+arr[1];
+                 $("#avatar").find("img").attr("src", avatarImg);
                 });
 
                 // assign a url to the "go on" button

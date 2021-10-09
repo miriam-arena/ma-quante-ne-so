@@ -23,7 +23,7 @@
               </div>
             </a>
             <strong id="tooltip-pointer-start" class="tooltip-pointer">
-              <p> Start</p>
+              <p> Via</p>
               <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                 <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
               </svg></span>
@@ -109,13 +109,13 @@
       <!-- QUESTION IMAGE -->
       <div class="row">
           <div class="col-12 text-center">
-              <img id="questionImg" alt="" src="" style="max-width:800px; padding-top:20px">
+              <img id="questionImg" alt="" src="" style="max-width:800px; padding-top:20px; width:100%;">
           </div>
       </div>
 
 
       <!-- REPLIES -->
-      <div class="row mt-1 mt-md-5">
+      <div class="row mt-1 mt-md-5 mb-5">
         <div class="col-12 text-left">
           <div class="form-check" id="check1">
             <label>
@@ -401,7 +401,7 @@
               $("#followingLink").show().attr("href", "section-end.html?s="+data.section+"&q="+data.next)
 
             // position of the user in the top bar
-            const tqn = data.tqn; // total number of questions in quiz (ie. 23)
+            const tqn = data.tqn + 2; // total number of questions in quiz...need to increase it a bit as the question seq number don't really match (ie. 23)
             const cq = q;           // current question number (ie. 12)
             const avatar = document.querySelector('#avatar');
             const progressTimeline = document.querySelector('#progressTimeline');

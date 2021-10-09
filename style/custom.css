@@ -307,12 +307,12 @@ input:checked+.circle .circle--inner {
 
 .m2 {
     top: -25px;
-    left: 32.5%
+    left: 40.3%
 }
 
 .m3 {
     top: -25px;
-    left: 66%
+    left: 90%
 }
 
 .mlast {
@@ -434,7 +434,7 @@ input:checked+.circle .circle--inner {
 }
 
 #question{
-    font-weight:1000; 
+    font-weight:1000;
     text-transform: uppercase;
     border:3px solid  #FE6D73;
     outline: 6px solid #FFCB77;
