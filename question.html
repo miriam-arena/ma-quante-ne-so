@@ -32,7 +32,7 @@
           <div class="tooltip-click">
             <a href="#">
               <div id="avatar" class="puntatore mfirst timeline-icon one">
-                <img height="35" src="img/parmigiano-negativo.png" alt="icona-parmigiano">
+                <img height="35" src="" alt="">
               </div>
             </a>
             <strong id="tooltip-pointer-avatar" class="tooltip-pointer">
@@ -330,6 +330,12 @@
             const nextLocation = evaluateUser(data)
             if (nextLocation.forward && s != "1" && q != "1") // if the user is at the first question, do not redirect
                window.location = nextLocation.location;
+
+            data = JSON.parse(data);
+            // build the name of the negative avatar img
+            const arr = data.avatar.split(".");
+            var avatarImg = arr[0]+"-negativo."+arr[1];
+           $("#avatar").find("img").attr("src", avatarImg);
           });
 
           // populate the question, long_text and replies tag
@@ -340,7 +346,7 @@
             if (data.long_text != "")
               $("#long_text").html(data.long_text);
 
-            if (data.image != "")
+            if (data.image && data.image != "")
               $("#questionImg").attr("src", "https://artathlon.arternative-lab.eu/storage/"+data.image).attr("alt", "descrizione immagine assente");
 
             // show response options
@@ -417,8 +423,8 @@
               section=5;
             }
             for(i=1;i<section;i++){ // change the colour of the pointers for the completed sections
-              document.getElementById('pointer'+i+'_img').src = 'img/pointer'+i+'_negativo.png';
-              document.getElementById('pointer'+i).setAttribute('style','background-color:#FE6D73 !important;');
+              $('#pointer'+i+'_img').attr('src', 'img/pointer'+i+'_negativo.png');
+              $('#pointer'+i).attr('style','background-color:#FE6D73 !important;');
             }
 
             const mq = window.matchMedia( "(max-width: 600px)" );
