@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 mt-3">
+                <div class="col-12 mt-3 mb-3">
                     <a href="#" id="questionLink"><button class="btn btn-secondary btn-lg">Avanti</button></a>
                 </div>
             </div>
@@ -180,7 +180,13 @@
                   break;
                 case "3":
                   $("#surveyPartTit").html("SECONDA");
-                  $("#surveyPartSubTit").html("TRAVERSETOLO...");
+                  let htmlBlock = "TRAVERSETOLO...<br><br>"
+                                + "Prima di procedere <b>guardate il video</b> del giovane Renato Brozzi<br>"
+                                + "che vi porterà in giro per Traversetolo e dintorni.<br><br>"
+                                + "<video controls style='width:100%'>"
+                                +   "<source src='video/Brozzi-all.mp4' type='video/mp4'>"
+                                + "</video>";
+                  $("#surveyPartSubTit").html(htmlBlock);
                   break;
                 case "4":
                   $("#surveyPartTit").html("TERZA");
