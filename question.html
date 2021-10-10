@@ -356,7 +356,7 @@
             if (data.image && data.image != "")
               $("#questionImg").attr("src", "https://artathlon.arternative-lab.eu/storage/"+data.image).attr("alt", "descrizione immagine assente");
 
-            if (data.video && data.video != "")
+            if (data.video && data.video != "[]")
             {
               let obj = JSON.parse(data.video);
               let htmlBlock = "Guarda il breve video e rispondi alla domanda<br><br>"
