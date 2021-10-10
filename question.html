@@ -98,6 +98,13 @@
       </div>
 
 
+      <!-- QUESTION VIDEO -->
+      <div class="row mb-4">
+          <div class="col-12 text-center" id="questionVideo">
+          </div>
+      </div>
+
+
       <!-- QUESTION -->
       <div class="row">
           <div class="col-12 text-center">
@@ -349,6 +356,16 @@
             if (data.image && data.image != "")
               $("#questionImg").attr("src", "https://artathlon.arternative-lab.eu/storage/"+data.image).attr("alt", "descrizione immagine assente");
 
+            if (data.video && data.video != "")
+            {
+              let obj = JSON.parse(data.video);
+              let htmlBlock = "Guarda il breve video e rispondi alla domanda<br><br>"
+                            + "<video controls style='width:100%'>"
+                            +   "<source src='https://artathlon.arternative-lab.eu/storage/"+obj[0].download_link+"' type='video/mp4'>"
+                            + "</video>";
+              $("#questionVideo").html(htmlBlock);
+            }
+
             // show response options
             if (data.reply_1)
             {
@@ -401,7 +418,7 @@
               $("#followingLink").show().attr("href", "section-end.html?s="+data.section+"&q="+data.next)
 
             // position of the user in the top bar
-            const tqn = data.tqn + 2; // total number of questions in quiz...need to increase it a bit as the question seq number don't really match (ie. 23)
+            const tqn = data.tqn + 3; // total number of questions in quiz...need to increase it a bit as the question seq number don't really match (ie. 23)
             const cq = q;           // current question number (ie. 12)
             const avatar = document.querySelector('#avatar');
             const progressTimeline = document.querySelector('#progressTimeline');
