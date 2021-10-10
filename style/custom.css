@@ -4,13 +4,6 @@ body {
     height: 100%;
 }
 
-body {
-    background-image: url("../img/ma-quante-ne-so-logo-trans3.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 .btn {
     border-width: 2px;
     box-shadow: 0 0.6em 2em rgba(8, 8, 8, 0.2);
@@ -206,7 +199,7 @@ input:checked+.circle .circle--inner {
         margin-left: 2rem;
     }
     .circle {
-        margin-top: 30px;
+        /* margin-top: 30px; */
     }
     #question {
         margin-bottom: 1rem;
