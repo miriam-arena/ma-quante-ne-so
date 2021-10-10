@@ -20,10 +20,8 @@ function getCookie(cname)
 */
 
 /* user logged in or already started the quiz or unknown */
-function evaluateUser(data)
+function evaluateUser(dataObj)
 {
-    var dataObj = JSON.parse(data);
-
     if (dataObj.unknown) // unknown user -> send back to login
     {
       dataObj.location = "log-in.html";

@@ -154,7 +154,7 @@
                 </defs>
               </svg>
             </label>
-            <label class="form-check-label" style="max-width:90%;" for="answer1">
+            <label class="form-check-label" style="max-width:80%;" for="answer1">
                 <h3></h3>
             </label>
           </div>
@@ -190,7 +190,7 @@
                 </defs>
               </svg>
             </label>
-            <label class="form-check-label" style="max-width:90%;" for="answer2">
+            <label class="form-check-label" style="max-width:80%;" for="answer2">
                 <h3></h3>
             </label>
           </div>
@@ -226,7 +226,7 @@
                 </defs>
               </svg>
             </label>
-            <label class="form-check-label" style="max-width:90%;" for="answer3">
+            <label class="form-check-label" style="max-width:80%;" for="answer3">
                 <h3></h3>
             </label>
           </div>
@@ -262,7 +262,7 @@
                 </defs>
               </svg>
             </label>
-            <label class="form-check-label" style="max-width:90%;" for="answer4">
+            <label class="form-check-label" style="max-width:80%;" for="answer4">
                 <h3></h3>
             </label>
           </div>
@@ -298,7 +298,7 @@
                 </defs>
               </svg>
             </label>
-            <label class="form-check-label" style="max-width:90%;" for="answer5">
+            <label class="form-check-label" style="max-width:80%;" for="answer5">
                 <h3></h3>
             </label>
           </div>
@@ -321,6 +321,11 @@
           </div>
       </div>
 
+      <div class="row mt-3 mt-md-5 mb-5 text-center">
+        <div class="col-12">
+          Problemi? Prenditela con chi ha fatto il gioco: <a href="" id="issue_mail">dev@arternative.it</a>
+        </div>
+      </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -331,18 +336,27 @@
           const s = allParams.get("s");
           const q = allParams.get("q");
 
+          $("#issue_mail").attr("href","mailto:dev@arternative.it?subject=quiz Brozzi q_"+q+"s_"+s+"&body=Descrivi di seguito il problema tecnico:")
+
           // check logged in user
           $.post( "https://artathlon.arternative-lab.eu/api/quizVisitorLogged",{c : getCookie('loginToken'), su : 2, q: q}, function( data )
           {
+            data = JSON.parse(data);
+
             const nextLocation = evaluateUser(data)
             if (nextLocation.forward && s != "1" && q != "1") // if the user is at the first question, do not redirect
                window.location = nextLocation.location;
 
-            data = JSON.parse(data);
+            if (data.finished && data.finished == 1) // user that have already finished shouldn't be allowed to pplay again
+              window.location = "finish-line.html";
+
             // build the name of the negative avatar img
-            const arr = data.avatar.split(".");
-            var avatarImg = arr[0]+"-negativo."+arr[1];
-           $("#avatar").find("img").attr("src", avatarImg);
+            if (data.avatar)
+            {
+              const arr = data.avatar.split(".");
+              var avatarImg = arr[0]+"-negativo."+arr[1];
+              $("#avatar").find("img").attr("src", avatarImg);
+           }
           });
 
           // populate the question, long_text and replies tag
@@ -417,6 +431,7 @@
             else if (data.section != s) // need to change section
               $("#followingLink").show().attr("href", "section-end.html?s="+data.section+"&q="+data.next)
 
+            const mq = window.matchMedia( "(max-width: 600px)" );
             // position of the user in the top bar
             const tqn = data.tqn + 3; // total number of questions in quiz...need to increase it a bit as the question seq number don't really match (ie. 23)
             const cq = q;           // current question number (ie. 12)
@@ -424,34 +439,34 @@
             const progressTimeline = document.querySelector('#progressTimeline');
             const tooltip = document.querySelector('#tooltip-pointer-avatar');
             let progressPercent = (cq / tqn) * 100;
-
+            if(mq.matches)
+            {
+              if (s == 1)
+                progressPercent = (cq / data.tsqn) * 100;
+              else if (s == 2)
+                progressPercent = ((cq - 23) / data.tsqn) * 100;
+              else if (s == 3)
+                progressPercent = ((cq - 23 - 28) / data.tsqn) * 100;
+            }
             avatar.style.setProperty('left', progressPercent + '%');
             tooltip.style.setProperty('left', progressPercent + '%');
             progressTimeline.setAttribute('style','width: ' + progressPercent + '%');
 
             // define the section number
-            if (cq>15){ // 15 is the number of the last question of the second section
-              section=3;
-            }
-            else if(cq>10){ // 10 is the number of the last question of the first section
-              section=2;
-            }
-            else{
-              section=5;
-            }
-            for(i=1;i<section;i++){ // change the colour of the pointers for the completed sections
+            let section = s;
+            for(i = 1; i < section; i++)
+            { // change the colour of the pointers for the completed sections
               $('#pointer'+i+'_img').attr('src', 'img/pointer'+i+'_negativo.png');
               $('#pointer'+i).attr('style','background-color:#FE6D73 !important;');
             }
 
-            const mq = window.matchMedia( "(max-width: 600px)" );
             const start = document.querySelector('#start');
             const pointer1 = document.querySelector('#pointer1');
             const pointer2 = document.querySelector('#pointer2');
             const pointer3 = document.querySelector('#pointer3');
 
-            if(mq.matches){ // set the pointers position in the mobile version
-
+            if(mq.matches)
+            { // set the pointers position in the mobile version
               if(section==1){
                 // avatar.style.setProperty('left','0%');
                 start.style.setProperty('left','0%');
