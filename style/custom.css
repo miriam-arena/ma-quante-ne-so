@@ -412,8 +412,8 @@ input:checked+.circle .circle--inner {
 /* QUESTION PAGE */
 
 #long_text {
-    text-align: justify;
-    text-justify: inter-word;
+    /* text-align: justify;
+    text-justify: inter-word; */
     font-size: 25px;
 }
 
